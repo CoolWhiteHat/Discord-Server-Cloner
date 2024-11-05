@@ -301,7 +301,7 @@ async def on_ready():
             f"1. Incorrect server ID\n"
             f"2. You are not in the inserted server\n"
             f"3. Inserted server does not exist\n"
-            f"Still not resolved? Contact the developer at "#[link=https://discord.gg/Qvf5NUtqMg]https://discord.gg/Qvf5NUtqMg[/link]"
+            f"Still not resolved? Contact the developer at [link=https://github.com/CoolWhiteHat/Discord-Server-Cloner/issues]https://github.com/CoolWhiteHat/Discord-Server-Cloner/issues[/link]"
         )
         console.print(
             RichPanel(panel_text,
