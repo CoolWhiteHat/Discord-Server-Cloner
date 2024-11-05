@@ -80,32 +80,6 @@ class Clone:
                 except Exception as e:
                     print(f"{Fore.RED}> Unable to delete the channel {Fore.YELLOW}{channel.name}({channel.type}){Fore.RED} Unidentified error: {e}{Fore.RESET}")
                     await asyncio.sleep(random.randint(9, 12))
-    
-#    @staticmethod
-#    async def channels_delete(guild_to: discord.Guild):
-#        for channel in guild_to.channels:
-#            try:
-#                await channel.delete()
-#                print_delete(
-#                    f"> The category {Fore.YELLOW}{channel.name}{Fore.BLUE} has been deleted"
-#                )
-#                await asyncio.sleep(0.20)
-#            except discord.Forbidden:
-#                print_error(
-#                    f"> Error deleting the category: {Fore.YELLOW}{channel.name}{Fore.RED} Insufficient permissions.{Fore.RESET}"
-#                )
-#                await asyncio.sleep(random.randint(2, 3))
-#            except discord.HTTPException as e:
-#                if e.status == 429:
-#                    print_warning(
-#                        f"> Too many requests made. Waiting 60 seconds. Details: {e}"
-#                    )
-#                    await asyncio.sleep(60)
-#            except:
-#                print_error(
-#                    f"> Unable to delete the channel {Fore.YELLOW}{channel.name}{Fore.RED} Unidentified error"
-#                )
-#                await asyncio.sleep(random.randint(9, 12))
 
     #region Categories Delete
     @staticmethod
@@ -296,129 +270,6 @@ class Clone:
             except:
                 print_error(
                     f"> Error creating the voice channel: {channel_voice.name}")
-    
-#    @staticmethod
-#    async def channels_create(guild_to: discord.Guild,
-#                              guild_from: discord.Guild):
-#        channel_text: discord.TextChannel
-#        channel_voice: discord.VoiceChannel
-#        category = None
-#        for channel_text in guild_from.text_channels:
-#            try:
-#                for category in guild_to.categories:
-#                    try:
-#                        if category.name == channel_text.category.name:
-#                            break
-#                    except AttributeError:
-#                        category = None
-#                        break
-#
-#                overwrites_to = {}
-#                for key, value in channel_text.overwrites.items():
-#                    role = discord.utils.get(guild_to.roles, name=key.name)
-#                    overwrites_to[role] = value
-#                try:
-#                    new_channel = await guild_to.create_text_channel(
-#                        name=channel_text.name,
-#                        overwrites=overwrites_to,
-#                        position=channel_text.position,
-#                        topic=channel_text.topic,
-#                        slowmode_delay=channel_text.slowmode_delay,
-#                        nsfw=channel_text.nsfw)
-#                except:
-#                    new_channel = await guild_to.create_text_channel(
-#                        name=channel_text.name,
-#                        overwrites=overwrites_to,
-#                        position=channel_text.position)
-#                if category is not None:
-#                    await new_channel.edit(category=category)
-#                print_add(
-#                    f"> The text channel {Fore.YELLOW}{channel_text.name}{Fore.BLUE} has been created"
-#                )
-#                await asyncio.sleep(0.59)
-#            except discord.Forbidden:
-#                print_error(
-#                    f"> Error creating text channel: {channel_text.name}")
-#                await asyncio.sleep(random.randint(8, 10))
-#            except discord.HTTPException as e:
-#                if e.status == 429:
-#                    print_warning(
-#                        f"> Too many requests made. Waiting 60 seconds. Details: {e}"
-#                    )
-#                    await asyncio.sleep(60)
-#                    new_channel = await guild_to.create_text_channel(
-#                        name=channel_text.name,
-#                        overwrites=overwrites_to,
-#                        position=channel_text.position)
-#                if category is not None:
-#                    await new_channel.edit(category=category)
-#                print_add(
-#                    f"> The channel {Fore.YELLOW}{channel_text.name}{Fore.BLUE} has been created"
-#                )
-#            except:
-#                print_error(
-#                    f"> Error creating text channel: {channel_text.name}")
-#                await asyncio.sleep(random.randint(9, 12))
-#
-#        category = None
-#        for channel_voice in guild_from.voice_channels:
-#            try:
-#                for category in guild_to.categories:
-#                    try:
-#                        if category.name == channel_voice.category.name:
-#                            break
-#                    except AttributeError:
-#                        print_warning(
-#                            f"> Voice channel {channel_voice.name} has no category!"
-#                        )
-#                        category = None
-#                        break
-#
-#                overwrites_to = {}
-#                for key, value in channel_voice.overwrites.items():
-#                    role = discord.utils.get(guild_to.roles, name=key.name)
-#                    overwrites_to[role] = value
-#                try:
-#                    new_channel = await guild_to.create_voice_channel(
-#                        name=channel_voice.name,
-#                        overwrites=overwrites_to,
-#                        position=channel_voice.position,
-#                        bitrate=channel_voice.bitrate,
-#                        user_limit=channel_voice.user_limit,
-#                    )
-#                except:
-#                    new_channel = await guild_to.create_voice_channel(
-#                        name=channel_voice.name,
-#                        overwrites=overwrites_to,
-#                        position=channel_voice.position)
-#                if category is not None:
-#                    await new_channel.edit(category=category)
-#                print_add(
-#                    f"> The voice channel {Fore.YELLOW}{channel_voice.name}{Fore.BLUE} has been created"
-#                )
-#                await asyncio.sleep(0.48)
-#            except discord.Forbidden:
-#                print_error(
-#                    f"> Error creating the voice channel: {channel_voice.name}")
-#                await asyncio.sleep(random.randint(6, 7))
-#            except discord.HTTPException as e:
-#                if e.status == 429:
-#                    print_warning(
-#                        f"> Too many requests made. Waiting 60 seconds. Details: {e}"
-#                    )
-#                    await asyncio.sleep(60)
-#                    new_channel = await guild_to.create_voice_channel(
-#                        name=channel_voice.name,
-#                        overwrites=overwrites_to,
-#                        position=channel_voice.position)
-#                if category is not None:
-#                    await new_channel.edit(category=category)
-#                print_add(
-#                    f"> The voice channel {Fore.YELLOW}{channel_voice.name}{Fore.BLUE} has been created"
-#                )
-#            except:
-#                print_error(
-#                    f"> Error creating the voice channel: {channel_voice.name}")
 
     # region Emojis Delete
     @staticmethod
@@ -490,30 +341,6 @@ class Clone:
                 print_warning(f"> An error occurred in {emoji.name}")
             except asyncio.TimeoutError:
                 print_error(f"> An error occurred in {emoji.name} TimeOut")
-
-#    @staticmethod
-#    async def guild_edit(guild_to: discord.Guild, guild_from: discord.Guild):
-#        try:
-#            try:
-#                icon_content = requests.get(guild_from.icon_url).content
-#            except requests.exceptions.RequestException:
-#                print_error(
-#                    f"Unable to download the icon from {guild_from.name}")
-#                icon_content = None
-#            await guild_to.edit(name=guild_from.name)
-#            if icon_content is not None:
-#                try:
-#                    await guild_to.edit(icon=icon_content)
-#                    print_add(f"Guild icon changed: {guild_to.name}")
-#                except:
-#                    print_error(
-#                        f"Error changing the guild icon: {guild_to.name}")
-#        except discord.LoginFailure:
-#            print(
-#                "Unable to authenticate the account. Check if the token is correct."
-#            )
-#        except discord.Forbidden:
-#            print_error(f"Error changing the guild icon: {guild_to.name}")
 
     #region Guild Edit
     @staticmethod
