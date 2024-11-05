@@ -1,0 +1,13 @@
+discord.py==1.7.3
+os
+time
+sys
+traceback
+asyncio
+platform
+inquirer
+discord
+asyncio
+random
+requests
+time
